@@ -13,19 +13,25 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.WindowManager;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
+    private final GradientDrawable.Orientation[] orientationList = { GradientDrawable.Orientation.BL_TR,
+            GradientDrawable.Orientation.BOTTOM_TOP, GradientDrawable.Orientation.BR_TL,
+            GradientDrawable.Orientation.LEFT_RIGHT, GradientDrawable.Orientation.TL_BR,
+            GradientDrawable.Orientation.TOP_BOTTOM, GradientDrawable.Orientation.TR_BL,
+            GradientDrawable.Orientation.RIGHT_LEFT };
+
     private ViewPager mViewPager;
 
     private TransitionDrawable tr;
-
-    int i = 0;
     boolean flag = true;
 
-    int time = 200;
+    int time = 10000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
         mViewPager.setAdapter(new SectionsPagerAdapter(getSupportFragmentManager()));
 
         tr = (TransitionDrawable) findViewById(R.id.main_content).getBackground();
+        tr.setDrawableByLayerId(tr.getId(0), getRandomGradient());
 
         new Timer().scheduleAtFixedRate(new TimerTask() {
             @Override
@@ -48,12 +55,10 @@ public class MainActivity extends AppCompatActivity {
                     public void run()
                     {
                         if(flag) {
-                            Log.e("IterationA", i++ + " ");
                             tr.setDrawableByLayerId(tr.getId(1), getRandomGradient());
                             tr.startTransition(time);
                         }
                         else {
-                            Log.e("IterationB", i++ + " ");
                             tr.setDrawableByLayerId(tr.getId(0), getRandomGradient());
                             tr.reverseTransition(time);
                         }
@@ -70,8 +75,9 @@ public class MainActivity extends AppCompatActivity {
         int color1 = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
         int color2 = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
 
-        return new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM,
-                new int[] {color1,color2});
+        GradientDrawable.Orientation orientation = orientationList[rnd.nextInt(8)];
+
+        return new GradientDrawable(orientation, new int[] {color1,color2});
     }
 
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
