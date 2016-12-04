@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<transition xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/first" android:drawable="@drawable/gradient1" />
+    <item android:id="@+id/second" android:drawable="@drawable/gradient2" />
+</transition>
