@@ -1,13 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="50px">
 
-    <CalendarView
+    <TextView
+        android:text="Time"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/calendarView" />
+        android:layout_height="wrap_content"
+        android:id="@+id/textView1"
+        android:layout_marginLeft="75px"
+        android:layout_marginTop="50px"/>
 
-</RelativeLayout>
+    <SeekBar
+        android:id="@+id/seekBar"
+        style="@style/Widget.AppCompat.SeekBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:max="20000"
+        android:layout_marginLeft="25px"
+        android:thumbTint="@color/black"
+        android:progressTint="@color/black"
+        />
+
+    <TextView
+        android:text="Alpha channel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView2"
+        android:layout_marginLeft="75px"
+        android:layout_marginTop="50px"/>
+
+    <SeekBar
+        style="@style/Widget.AppCompat.SeekBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:max="255"
+        android:id="@+id/seekBarWhite"
+        android:layout_margin="25px"
+        android:thumbTint="@color/grey"
+        android:progressTint="@color/grey"/>
+
+    <TextView
+        android:text="RGB channel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView3"
+        android:layout_marginLeft="75px"
+        android:layout_marginTop="50px"/>
+
+    <SeekBar
+        style="@style/Widget.AppCompat.SeekBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:max="255"
+        android:id="@+id/seekBarRed"
+        android:layout_margin="25px"
+        android:thumbTint="@color/red"
+        android:progressTint="@color/red"/>
+
+    <SeekBar
+        style="@style/Widget.AppCompat.SeekBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:max="255"
+        android:id="@+id/seekBarGreen"
+        android:layout_margin="25px"
+        android:thumbTint="@color/green"
+        android:progressTint="@color/green"/>
+
+    <SeekBar
+        style="@style/Widget.AppCompat.SeekBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:max="255"
+        android:id="@+id/seekBarBlue"
+        android:layout_margin="25px"
+        android:thumbTint="@color/blue"
+        android:progressTint="@color/blue"/>
+
+</LinearLayout>
